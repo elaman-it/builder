@@ -1,7 +1,11 @@
+import Layout from "./components/Layout/Layout";
+
 function App() {
   return (
     <div className="App">
-      Pizza Builder by master Elaman Imashov
+      <Layout>
+        Pizza Builder by master Elaman Imashov
+      </Layout>
     </div>
   );
 }
