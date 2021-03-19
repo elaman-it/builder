@@ -2,7 +2,9 @@ import classes from "./PizzaPreview.module.css";
 
 const PizzaPreview = () => {
   return (
-    <div className={classes.PizzaPreview}></div>
+    <div className={classes.PizzaPreview}>
+      <div className={classes.sauce}></div>
+    </div>
   );
 }
 
