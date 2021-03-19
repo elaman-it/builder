@@ -1,20 +1,17 @@
-import { useState } from "react";
 import Logo from "../Logo/Logo";
 import Nav from "../Nav/Nav";
 import Backdrop from "../UI/Backdrop/Backdrop";
 import classes from "./Drawer.module.css";
 
-const Drawer = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
+const Drawer = ({ open }) => {
   const drawerClasses = [
     classes.content,
-    drawerOpen ? classes.open : classes.close
+    open ? classes.open : classes.close
   ];
 
   return (
     <div className={classes.Drawer}>
-      <Backdrop show={drawerOpen} />
+      <Backdrop show={open} />
       <div className={drawerClasses.join(" ")}>
         <Logo />
         <Nav />
