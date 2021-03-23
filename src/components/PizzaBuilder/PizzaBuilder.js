@@ -4,12 +4,12 @@ import PizzaControls from "./PizzaControls/PizzaControls";
 
 const PizzaBuilder = () => {
   const ingredients = {
-    tomato: 10,
+    tomato: 20,
     salami: 20,
-    greenOlive: 10,
-    blackOlive: 10,
-    redPepper: 10,
-    yellowPepper: 5,
+    greenOlive: 20,
+    blackOlive: 20,
+    redPepper: 20,
+    yellowPepper: 15,
   };
 
   return (

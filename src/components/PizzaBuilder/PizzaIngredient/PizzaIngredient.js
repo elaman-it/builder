@@ -37,9 +37,12 @@ const PizzaIngredient = ({ type }) => {
       : getPosition(ingredientWidth);
   }
 
+  // Get random position for this ingredient.
   const position = getPosition(types[type].width);
   types[type].top = position.top + "px";
   types[type].left = position.left + "px";
+  // Get random rotation for this ingredient.
+  types[type].transform = `rotate(${Math.round(Math.random() * 360)}deg)`;
 
   return (
     <div className={classes.PizzaIngredient} style={types[type]}></div>
