@@ -4,15 +4,14 @@
   margin-right: 1rem;
   margin-bottom: 1rem;
   border-radius: 100%;
-  background-color: wheat;
+  background-color: #fcc067;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.sauce {
-  width: 370px;
-  height: 370px;
+.ingredients {
+  width: 380px;
+  height: 380px;
   border-radius: 100%;
-  background-color: tomato;
 }
