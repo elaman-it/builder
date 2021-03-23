@@ -4,9 +4,9 @@ import PizzaControls from "./PizzaControls/PizzaControls";
 
 const PizzaBuilder = () => {
   const ingredients = {
-    tomatoes: 10,
+    tomato: 10,
     salami: 20,
-    olives: 10,
+    olive: 10,
   };
 
   return (
