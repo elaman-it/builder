@@ -6,7 +6,10 @@ const PizzaBuilder = () => {
   const ingredients = {
     tomato: 10,
     salami: 20,
-    olive: 10,
+    greenOlive: 10,
+    blackOlive: 10,
+    redPepper: 10,
+    yellowPepper: 5,
   };
 
   return (
