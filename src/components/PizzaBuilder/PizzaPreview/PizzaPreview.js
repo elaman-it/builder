@@ -1,4 +1,5 @@
 import PizzaIngredient from "../PizzaIngredient/PizzaIngredient";
+
 import classes from "./PizzaPreview.module.css";
 import ingredientsBackground from "../../../images/cheese.svg";
 

@@ -1,6 +1,7 @@
-import classes from "./PizzaBuilder.module.css";
 import PizzaPreview from "./PizzaPreview/PizzaPreview";
 import PizzaControls from "./PizzaControls/PizzaControls";
+
+import classes from "./PizzaBuilder.module.css";
 
 const PizzaBuilder = () => {
   const ingredients = {
