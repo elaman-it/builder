@@ -1,14 +1,22 @@
 import PizzaControl from "./PizzaControl/PizzaControl";
 import classes from "./PizzaControls.module.css";
 
-const PizzaControls = ({ ingredients, addIngredient, removeIngredient }) => {
+const PizzaControls = ({ addIngredient, removeIngredient }) => {
   const results = [];
+  const ingredients = [
+    "tomato",
+    "salami",
+    "greenOlive",
+    "blackOlive",
+    "redPepper",
+    "yellowPepper",
+  ];
   for (const ingredient in ingredients) {
     results.push(<PizzaControl
-        key={ingredient}
+        key={ingredients[ingredient]}
         add={addIngredient}
         remove={removeIngredient}
-        type={ingredient} />)
+        type={ingredients[ingredient]} />)
   }
 
   return (

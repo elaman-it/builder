@@ -5,24 +5,25 @@ import classes from "./PizzaBuilder.module.css";
 import { useState } from "react";
 
 const PizzaBuilder = () => {
-  const [ingredients, setIngredients] = useState({
-    tomato: 1,
-    salami: 1,
-    greenOlive: 1,
-    blackOlive: 1,
-    redPepper: 1,
-    yellowPepper: 1,
-  });
+  const [ingredients, setIngredients] = useState([
+    "tomato",
+    "salami",
+    "tomato",
+    "salami"
+  ]);
 
   function addIngredient(type) {
-    const newIngredients = { ...ingredients };
-    newIngredients[type]++;
+    const newIngredients = [ ...ingredients ];
+    newIngredients.push(type);
     setIngredients(newIngredients);
   }
 
   function removeIngredient(type) {
-    const newIngredients = { ...ingredients };
-    newIngredients[type]--;
+    const newIngredients = [ ...ingredients ];
+    const index = newIngredients.lastIndexOf(type);
+    if (index !== -1) {
+      newIngredients.splice(index, 1);
+    }
     setIngredients(newIngredients);
   }
 
@@ -30,7 +31,6 @@ const PizzaBuilder = () => {
     <div className={classes.PizzaBuilder}>
       <PizzaPreview ingredients={ingredients} />
       <PizzaControls
-        ingredients={ingredients}
         addIngredient={addIngredient}
         removeIngredient={removeIngredient}
         />
