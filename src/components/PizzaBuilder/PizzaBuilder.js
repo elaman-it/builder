@@ -13,6 +13,7 @@ const PizzaBuilder = () => {
     redPepper: 1,
     yellowPepper: 1,
   });
+  const [price, setPrice] = useState(150);
 
   function addIngredient(type) {
     const newIngredients = { ...ingredients };
@@ -30,7 +31,9 @@ const PizzaBuilder = () => {
 
   return (
     <div className={classes.PizzaBuilder}>
-      <PizzaPreview ingredients={ingredients} />
+      <PizzaPreview
+        ingredients={ingredients}
+        price={price} />
       <PizzaControls
         ingredients={ingredients}
         addIngredient={addIngredient}
