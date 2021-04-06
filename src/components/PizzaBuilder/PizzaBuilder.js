@@ -21,9 +21,11 @@ const PizzaBuilder = () => {
   }
 
   function removeIngredient(type) {
-    const newIngredients = { ...ingredients };
-    newIngredients[type]--;
-    setIngredients(newIngredients);
+    if (ingredients[type]) {
+      const newIngredients = { ...ingredients };
+      newIngredients[type]--;
+      setIngredients(newIngredients);
+    }
   }
 
   return (
