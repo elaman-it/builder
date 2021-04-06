@@ -5,6 +5,14 @@ import classes from "./PizzaBuilder.module.css";
 import { useState } from "react";
 
 const PizzaBuilder = () => {
+  const prices = {
+    tomato: 3.5,
+    salami: 4,
+    greenOlive: .3,
+    blackOlive: .3,
+    redPepper: 2,
+    yellowPepper: 1,
+  };
   const [ingredients, setIngredients] = useState({
     tomato: 1,
     salami: 1,
@@ -18,6 +26,7 @@ const PizzaBuilder = () => {
   function addIngredient(type) {
     const newIngredients = { ...ingredients };
     newIngredients[type]++;
+    setPrice(price + prices[type]);
     setIngredients(newIngredients);
   }
 
@@ -25,6 +34,7 @@ const PizzaBuilder = () => {
     if (ingredients[type]) {
       const newIngredients = { ...ingredients };
       newIngredients[type]--;
+      setPrice(price - prices[type]);
       setIngredients(newIngredients);
     }
   }
