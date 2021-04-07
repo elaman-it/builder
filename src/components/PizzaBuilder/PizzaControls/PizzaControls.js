@@ -1,3 +1,4 @@
+import Button from "../../UI/Button/Button";
 import PizzaControl from "./PizzaControl/PizzaControl";
 import classes from "./PizzaControls.module.css";
 
@@ -19,7 +20,7 @@ const PizzaControls = ({ ingredients, addIngredient, removeIngredient }) => {
     <div className={classes.PizzaControls}>
       <strong>Ingredients</strong>
       {results}
-      <button disabled={!total}>Order</button>
+      <Button disabled={!total}>Order</Button>
     </div>
   );
 }
