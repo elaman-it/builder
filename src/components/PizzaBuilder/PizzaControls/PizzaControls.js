@@ -2,7 +2,12 @@ import Button from "../../UI/Button/Button";
 import PizzaControl from "./PizzaControl/PizzaControl";
 import classes from "./PizzaControls.module.css";
 
-const PizzaControls = ({ ingredients, addIngredient, removeIngredient }) => {
+const PizzaControls = ({
+  ingredients,
+  addIngredient,
+  removeIngredient,
+  startOrdering
+}) => {
   const results = [];
   let total = 0;
   for (const ingredient in ingredients) {
@@ -21,7 +26,7 @@ const PizzaControls = ({ ingredients, addIngredient, removeIngredient }) => {
     <div className={classes.PizzaControls}>
       <strong>Ingredients</strong>
       {results}
-      <Button disabled={!total}>Order</Button>
+      <Button disabled={!total} onClick={startOrdering}>Order</Button>
     </div>
   );
 }

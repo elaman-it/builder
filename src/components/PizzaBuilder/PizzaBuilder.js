@@ -17,6 +17,7 @@ const PizzaBuilder = () => {
   };
   const [ingredients, setIngredients] = useState({});
   const [price, setPrice] = useState(0);
+  const [ordering, setOrdering] = useState(false);
 
   useEffect(
     () => axios
@@ -47,6 +48,14 @@ const PizzaBuilder = () => {
     }
   }
 
+  function startOrdering() {
+    setOrdering(true);
+  }
+
+  function stopOrdering() {
+    setOrdering(false);
+  }
+
   return (
     <div className={classes.PizzaBuilder}>
       <PizzaPreview
@@ -56,8 +65,11 @@ const PizzaBuilder = () => {
         ingredients={ingredients}
         addIngredient={addIngredient}
         removeIngredient={removeIngredient}
+        startOrdering={startOrdering}
         />
-      <Modal>Hello</Modal>
+      <Modal
+        show={ordering}
+        cancel={stopOrdering}>Hello</Modal>
     </div>
   );
 }
