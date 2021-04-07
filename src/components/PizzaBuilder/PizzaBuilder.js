@@ -27,7 +27,7 @@ const PizzaBuilder = () => {
         // setIngredients(Object.values(response.data.ingredients));
         // For objects
         setIngredients(response.data.ingredients);
-      })
+      }), []
   );
 
   function addIngredient(type) {
