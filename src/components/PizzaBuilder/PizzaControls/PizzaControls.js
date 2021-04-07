@@ -13,6 +13,7 @@ const PizzaControls = ({ ingredients, addIngredient, removeIngredient }) => {
         key={ingredient}
         add={addIngredient}
         remove={removeIngredient}
+        count={ingredients[ingredient]}
         type={ingredient} />)
   }
 
