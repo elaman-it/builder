@@ -2,7 +2,8 @@ import PizzaPreview from "./PizzaPreview/PizzaPreview";
 import PizzaControls from "./PizzaControls/PizzaControls";
 
 import classes from "./PizzaBuilder.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const PizzaBuilder = () => {
   const prices = {
@@ -13,15 +14,21 @@ const PizzaBuilder = () => {
     redPepper: 2,
     yellowPepper: 1,
   };
-  const [ingredients, setIngredients] = useState({
-    tomato: 1,
-    salami: 1,
-    greenOlive: 1,
-    blackOlive: 1,
-    redPepper: 1,
-    yellowPepper: 1,
-  });
-  const [price, setPrice] = useState(150);
+  const [ingredients, setIngredients] = useState({});
+  const [price, setPrice] = useState(0);
+
+  useEffect(
+    () => axios
+      .get('https://builder-a51d0-default-rtdb.firebaseio.com/default.json')
+      .then(response => {
+        setPrice(response.data.price);
+
+        // For arrays
+        // setIngredients(Object.values(response.data.ingredients));
+        // For objects
+        setIngredients(response.data.ingredients);
+      })
+  );
 
   function addIngredient(type) {
     const newIngredients = { ...ingredients };
