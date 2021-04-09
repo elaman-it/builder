@@ -21,8 +21,10 @@ const PizzaBuilder = () => {
   const [price, setPrice] = useState(0);
   const [ordering, setOrdering] = useState(false);
 
-  useEffect(
-    () => axios
+  useEffect(loadDefaults, []);
+
+  function loadDefaults() {
+    axios
       .get('https://builder-a51d0-default-rtdb.firebaseio.com/default.json')
       .then(response => {
         setPrice(response.data.price);
@@ -31,8 +33,8 @@ const PizzaBuilder = () => {
         // setIngredients(Object.values(response.data.ingredients));
         // For objects
         setIngredients(response.data.ingredients);
-      }), []
-  );
+      });
+  }
 
   function addIngredient(type) {
     const newIngredients = { ...ingredients };
@@ -59,7 +61,18 @@ const PizzaBuilder = () => {
   }
 
   function finishOrdering() {
-    setOrdering(false);
+    axios
+      .post('https://builder-a51d0-default-rtdb.firebaseio.com/orders.json', {
+        ingredients: ingredients,
+        price: price,
+        address: "1234 Jusaeva str",
+        phone: "0 777 777 777",
+        name: "Sadyr Japarov",
+      })
+      .then(() => {
+        setOrdering(false);
+        loadDefaults();
+      });
   }
 
   return (
