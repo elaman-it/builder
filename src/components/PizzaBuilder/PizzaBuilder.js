@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../UI/Modal/Modal";
 import OrderSummary from "./OrderSummary/OrderSummary";
+import Button from "../UI/Button/Button";
 
 const PizzaBuilder = () => {
   const prices = {
@@ -57,6 +58,10 @@ const PizzaBuilder = () => {
     setOrdering(false);
   }
 
+  function finishOrdering() {
+    setOrdering(false);
+  }
+
   return (
     <div className={classes.PizzaBuilder}>
       <PizzaPreview
@@ -75,6 +80,8 @@ const PizzaBuilder = () => {
             ingredients={ingredients}
             price={price}
             />
+          <Button onClick={finishOrdering} green>Checkout</Button>
+          <Button onClick={stopOrdering}>Cancel</Button>
         </Modal>
     </div>
   );
