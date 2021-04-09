@@ -5,6 +5,7 @@ import classes from "./PizzaBuilder.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../UI/Modal/Modal";
+import OrderSummary from "./OrderSummary/OrderSummary";
 
 const PizzaBuilder = () => {
   const prices = {
@@ -69,7 +70,12 @@ const PizzaBuilder = () => {
         />
       <Modal
         show={ordering}
-        cancel={stopOrdering}>Hello</Modal>
+        cancel={stopOrdering}>
+          <OrderSummary
+            ingredients={ingredients}
+            price={price}
+            />
+        </Modal>
     </div>
   );
 }
