@@ -8,7 +8,7 @@ import Modal from "../UI/Modal/Modal";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import Button from "../UI/Button/Button";
 
-const PizzaBuilder = () => {
+const PizzaBuilder = ({ history }) => {
   const prices = {
     tomato: 3.5,
     salami: 4,
@@ -72,6 +72,7 @@ const PizzaBuilder = () => {
       .then(() => {
         setOrdering(false);
         loadDefaults();
+        history.push('/checkout');
       });
   }
 
