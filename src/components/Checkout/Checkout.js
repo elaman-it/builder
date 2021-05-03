@@ -1,4 +1,5 @@
-import CheckoutSummary from "./CheckoutSummary/CheckoutSummary"
+import PizzaPreview from "../PizzaBuilder/PizzaPreview/PizzaPreview";
+import CheckoutForm from "./CheckoutForm/CheckoutForm";
 
 const Checkout = ({ history }) => {
   function cancelCallback() {
@@ -7,7 +8,12 @@ const Checkout = ({ history }) => {
 
   return (
     <div>
-      <CheckoutSummary cancelCallback={cancelCallback} />
+      <PizzaPreview ingredients={{
+        tomato: 5, 
+        salami: 10,
+        greenOlive: 50,
+      }} price={150} />
+      <CheckoutForm />
     </div>
   );
 }
