@@ -2,9 +2,13 @@ import PizzaPreview from "../PizzaBuilder/PizzaPreview/PizzaPreview";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import classes from "./Checkout.module.css";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 
 const Checkout = ({ history }) => {
+  const ingredients = useSelector(state => state.ingredients);
+  const price = useSelector(state => state.price);
+
   function cancelCallback() {
     history.replace('/');
   }
@@ -16,15 +20,8 @@ const Checkout = ({ history }) => {
       name: data.get('name'),
       address: data.get('address'),
       phone: data.get('phone'),
-      ingredients: {
-        tomato: 10,
-        salami: 10,
-        redPepper: 10,
-        yellowPepper: 10,
-        greenOlive: 10,
-        blackOlive: 10,
-      },
-      price: 100,
+      ingredients: ingredients,
+      price: price,
     }).then(response => {
       history.replace('/');
     });
@@ -34,11 +31,7 @@ const Checkout = ({ history }) => {
 
   return (
     <div className={classes.Checkout}>
-      <PizzaPreview ingredients={{
-        tomato: 5, 
-        salami: 10,
-        greenOlive: 50,
-      }} price={150} />
+      <PizzaPreview ingredients={ingredients} price={price} />
       <CheckoutForm
         cancelCallback={cancelCallback}
         submitCallback={submitCallback} />
