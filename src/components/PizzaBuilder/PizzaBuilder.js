@@ -7,6 +7,7 @@ import axios from "axios";
 import Modal from "../UI/Modal/Modal";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import Button from "../UI/Button/Button";
+import { useSelector } from "react-redux";
 
 const PizzaBuilder = ({ history }) => {
   const prices = {
@@ -17,30 +18,29 @@ const PizzaBuilder = ({ history }) => {
     redPepper: 2,
     yellowPepper: 1,
   };
-  const [ingredients, setIngredients] = useState({});
+  const ingredients = useSelector(state => state.ingredients);
   const [price, setPrice] = useState(0);
   const [ordering, setOrdering] = useState(false);
 
-  useEffect(loadDefaults, []);
+  // useEffect(loadDefaults, []);
 
-  function loadDefaults() {
-    axios
-      .get('https://builder-a51d0-default-rtdb.firebaseio.com/default.json')
-      .then(response => {
-        setPrice(response.data.price);
+  // function loadDefaults() {
+  //   axios
+  //     .get('https://builder-a51d0-default-rtdb.firebaseio.com/default.json')
+  //     .then(response => {
+  //       setPrice(response.data.price);
 
-        // For arrays
-        // setIngredients(Object.values(response.data.ingredients));
-        // For objects
-        setIngredients(response.data.ingredients);
-      });
-  }
+  //       // For arrays
+  //       // setIngredients(Object.values(response.data.ingredients));
+  //       // For objects
+  //       setIngredients(response.data.ingredients);
+  //     });
+  // }
 
   function addIngredient(type) {
     const newIngredients = { ...ingredients };
     newIngredients[type]++;
     setPrice(price + prices[type]);
-    setIngredients(newIngredients);
   }
 
   function removeIngredient(type) {
@@ -48,7 +48,6 @@ const PizzaBuilder = ({ history }) => {
       const newIngredients = { ...ingredients };
       newIngredients[type]--;
       setPrice(price - prices[type]);
-      setIngredients(newIngredients);
     }
   }
 
@@ -71,7 +70,7 @@ const PizzaBuilder = ({ history }) => {
       })
       .then(() => {
         setOrdering(false);
-        loadDefaults();
+        // loadDefaults();
         history.push('/checkout');
       });
   }
