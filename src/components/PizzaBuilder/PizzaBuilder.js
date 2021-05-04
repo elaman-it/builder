@@ -19,7 +19,7 @@ const PizzaBuilder = ({ history }) => {
     yellowPepper: 1,
   };
   const ingredients = useSelector(state => state.ingredients);
-  const [price, setPrice] = useState(0);
+  const price = useSelector(state => state.price);
   const [ordering, setOrdering] = useState(false);
 
   // useEffect(loadDefaults, []);
@@ -36,20 +36,6 @@ const PizzaBuilder = ({ history }) => {
   //       setIngredients(response.data.ingredients);
   //     });
   // }
-
-  function addIngredient(type) {
-    const newIngredients = { ...ingredients };
-    newIngredients[type]++;
-    setPrice(price + prices[type]);
-  }
-
-  function removeIngredient(type) {
-    if (ingredients[type]) {
-      const newIngredients = { ...ingredients };
-      newIngredients[type]--;
-      setPrice(price - prices[type]);
-    }
-  }
 
   function startOrdering() {
     setOrdering(true);
@@ -82,8 +68,6 @@ const PizzaBuilder = ({ history }) => {
         price={price} />
       <PizzaControls
         ingredients={ingredients}
-        addIngredient={addIngredient}
-        removeIngredient={removeIngredient}
         startOrdering={startOrdering}
         />
       <Modal

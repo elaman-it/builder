@@ -4,8 +4,6 @@ import classes from "./PizzaControls.module.css";
 
 const PizzaControls = ({
   ingredients,
-  addIngredient,
-  removeIngredient,
   startOrdering
 }) => {
   const results = [];
@@ -16,8 +14,6 @@ const PizzaControls = ({
     // Render pizza control for this ingredient
     results.push(<PizzaControl
         key={ingredient}
-        add={addIngredient}
-        remove={removeIngredient}
         count={ingredients[ingredient]}
         type={ingredient} />)
   }
