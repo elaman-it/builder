@@ -1,4 +1,4 @@
-import { ADD_TODO, REMOVE_TODO } from "./types";
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from "./types";
 
 export const add = (text) => ({
   type: ADD_TODO,
@@ -10,10 +10,23 @@ export const remove = (id) => ({
   id: id
 });
 
-export const delay = (text) => {
+export const toggle = (id) => ({
+  type: TOGGLE_TODO,
+  id: id
+});
+
+export const delayedAdd = (text) => {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(add(text));
-    }, 3000);
+    }, 1000);
+  }
+}
+
+export const delayedRemove = (id) => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(remove(id));
+    }, 1000);
   }
 }
