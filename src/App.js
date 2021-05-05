@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_TODO, REMOVE_TODO } from "./redux/actions/types";
+import { add, remove } from "./redux/actions/todo";
 
 const App = () => {
   const items = useSelector(state => state);
   const dispatch = useDispatch();
 
   function onRemoveCallback(id) {
-    dispatch({ type: ADD_TODO, id: id });
+    dispatch(remove(id));
   }
 
   function onAddCallback(event) {
     event.preventDefault();
 
     const data = new FormData(event.target);
-    dispatch({ type: REMOVE_TODO, text: data.get('new') });
+    dispatch(add(data.get('new')));
   }
 
   const results = Object.keys(items).map(id => (
