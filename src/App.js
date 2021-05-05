@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { add, remove } from "./redux/actions/todo";
+import { delay, remove } from "./redux/actions/todo";
 
 const App = () => {
   const items = useSelector(state => state);
@@ -13,7 +13,7 @@ const App = () => {
     event.preventDefault();
 
     const data = new FormData(event.target);
-    dispatch(add(data.get('new')));
+    dispatch(delay(data.get('new')));
   }
 
   const results = Object.keys(items).map(id => (

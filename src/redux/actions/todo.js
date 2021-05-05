@@ -9,3 +9,11 @@ export const remove = (id) => ({
   type: REMOVE_TODO,
   id: id
 });
+
+export const delay = (text) => {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(add(text));
+    }, 3000);
+  }
+}
