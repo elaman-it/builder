@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { add, remove } from "../../../../store/actions/builder";
 import Button from "../../../UI/Button/Button";
 import PizzaIngredient from "../../PizzaIngredient/PizzaIngredient";
 import classes from "./PizzaControl.module.css";
@@ -8,11 +9,11 @@ const PizzaControl = ({ type, count }) => {
 
   return (
     <div className={classes.PizzaControl}>
-      <Button onClick={() => dispatch({ type: "ADD_INGREDIENT", ingredient: type })}>+</Button>
+      <Button onClick={() => dispatch(add(type))}>+</Button>
       <div className={classes.ingredient}>
         <PizzaIngredient type={type} fixed />
       </div>
-      <Button onClick={() => dispatch({ type: "REMOVE_INGREDIENT", ingredient: type })} disabled={!count}>-</Button>
+      <Button onClick={() => dispatch(remove(type))} disabled={!count}>-</Button>
     </div>
   );
 }
