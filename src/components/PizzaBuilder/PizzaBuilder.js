@@ -1,6 +1,7 @@
 import PizzaPreview from "./PizzaPreview/PizzaPreview";
 import PizzaControls from "./PizzaControls/PizzaControls";
-
+import withAxios from "../withAxios";
+import axios from "../../axios";
 import classes from "./PizzaBuilder.module.css";
 import { useEffect, useState } from "react";
 import Modal from "../UI/Modal/Modal";
@@ -54,4 +55,4 @@ const PizzaBuilder = ({ history }) => {
   );
 }
 
-export default PizzaBuilder;
+export default withAxios(PizzaBuilder, axios);

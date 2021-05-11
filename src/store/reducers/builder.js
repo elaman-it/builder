@@ -2,14 +2,8 @@ import { ADD_INGREDIENT, REMOVE_INGREDIENT } from "../actions/types";
 
 const initialState = {
   ingredients: {
-    tomato: 10,
-    salami: 10,
-    redPepper: 10,
-    yellowPepper: 10,
-    greenOlive: 10,
-    blackOlive: 10,
   },
-  price: 200,
+  price: 0,
 };
 const prices = {
   tomato: 3.5,
