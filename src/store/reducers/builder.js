@@ -18,7 +18,7 @@ const prices = {
   yellowPepper: 1,
 };
 
-const builderReducer = (state = initialState, action) => {
+const builder = (state = initialState, action) => {
   const newState = { ...state };
 
   switch (action.type) {
@@ -38,4 +38,4 @@ const builderReducer = (state = initialState, action) => {
   return newState;
 }
 
-export default builderReducer;
+export default builder;
