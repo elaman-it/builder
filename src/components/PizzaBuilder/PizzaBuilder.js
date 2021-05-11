@@ -7,27 +7,16 @@ import axios from "axios";
 import Modal from "../UI/Modal/Modal";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import Button from "../UI/Button/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { load } from "../../store/actions/builder";
 
 const PizzaBuilder = ({ history }) => {
+  const dispatch = useDispatch();
   const ingredients = useSelector(state => state.builder.ingredients);
   const price = useSelector(state => state.builder.price);
   const [ordering, setOrdering] = useState(false);
 
-  // useEffect(loadDefaults, []);
-
-  // function loadDefaults() {
-  //   axios
-  //     .get('https://builder-a51d0-default-rtdb.firebaseio.com/default.json')
-  //     .then(response => {
-  //       setPrice(response.data.price);
-
-  //       // For arrays
-  //       // setIngredients(Object.values(response.data.ingredients));
-  //       // For objects
-  //       setIngredients(response.data.ingredients);
-  //     });
-  // }
+  useEffect(() => dispatch(load()), [dispatch]);
 
   function startOrdering() {
     setOrdering(true);
