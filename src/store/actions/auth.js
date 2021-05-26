@@ -31,7 +31,7 @@ export const restore = () => {
     const localId = localStorage.getItem('localId');
 
     if (idToken && localId) {
-      success(dispatch, { idToken, localId });
+      dispatch(success({ idToken, localId }));
     }
     else {
       dispatch(logout());
@@ -52,6 +52,7 @@ export const auth = (method, email, password) => {
 
   return (dispatch) => axios.post(url + key, data)
     .then(({ data }) => {
+      console.log(data);
       localStorage.setItem("idToken", data.idToken);
       localStorage.setItem("localId", data.localId);
 
